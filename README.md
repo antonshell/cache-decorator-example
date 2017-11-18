@@ -4,7 +4,15 @@ Here is an example of using decorator pattern for caching.
 
 # Usage
 
-Clone repository. Then run
+1 . Clone repository. 
+
+2 . Install dependencies with composer
+
+```
+composer install
+```
+
+3 . Then run
 
 ```
 php index.php
