@@ -11,8 +11,15 @@ use Psr\Log\LoggerInterface;
  */
 class DataCache extends Decorator{
 
-    public $cache;
-    public $logger;
+    /**
+     * @var CacheItemPoolInterface
+     */
+    private $cache;
+
+    /**
+     * @var null|LoggerInterface
+     */
+    private $logger;
 
     /**
      * DataCache constructor.
