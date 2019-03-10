@@ -6,6 +6,10 @@ Here is an example of using decorator pattern for caching.
 
 1 . Clone repository. 
 
+```
+git clone https://github.com/antonshell/cache-decorator-example.git
+```
+
 2 . Install dependencies with composer
 
 ```
