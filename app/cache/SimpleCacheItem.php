@@ -2,6 +2,7 @@
 
 namespace app\cache;
 
+use app\NotImplementedException;
 use Psr\Cache\CacheItemInterface;
 
 /**
@@ -29,8 +30,6 @@ class SimpleCacheItem implements CacheItemInterface {
     public function getKey()
     {
         return $this->key;
-
-        // TODO: Implement getKey() method.
     }
 
     /**
@@ -102,7 +101,7 @@ class SimpleCacheItem implements CacheItemInterface {
      */
     public function expiresAt($expiration)
     {
-        // TODO: Implement expiresAt() method.
+        //throw new NotImplementedException();
     }
 
     /**
@@ -120,7 +119,7 @@ class SimpleCacheItem implements CacheItemInterface {
      */
     public function expiresAfter($time)
     {
-        // TODO: Implement expiresAfter() method.
+        throw new NotImplementedException();
     }
 
     /**

@@ -1,10 +1,15 @@
 <?php
 
-namespace app;
+namespace app\logger;
 
 use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 
-class DummyLogger implements LoggerInterface{
+/**
+ * Class DummyLogger
+ * @package app
+ */
+class FileLogger implements LoggerInterface{
 
     /**
      * System is unusable.
@@ -16,7 +21,7 @@ class DummyLogger implements LoggerInterface{
      */
     public function emergency($message, array $context = array())
     {
-        // TODO: Implement emergency() method.
+        $this->writeLog(LogLevel::EMERGENCY, $message);
     }
 
     /**
@@ -32,7 +37,7 @@ class DummyLogger implements LoggerInterface{
      */
     public function alert($message, array $context = array())
     {
-        // TODO: Implement alert() method.
+        $this->writeLog(LogLevel::ALERT, $message);
     }
 
     /**
@@ -47,7 +52,7 @@ class DummyLogger implements LoggerInterface{
      */
     public function critical($message, array $context = array())
     {
-        // TODO: Implement critical() method.
+        $this->writeLog(LogLevel::CRITICAL, $message);
     }
 
     /**
@@ -61,7 +66,7 @@ class DummyLogger implements LoggerInterface{
      */
     public function error($message, array $context = array())
     {
-        // TODO: Implement error() method.
+        $this->writeLog(LogLevel::ERROR, $message);
     }
 
     /**
@@ -77,7 +82,7 @@ class DummyLogger implements LoggerInterface{
      */
     public function warning($message, array $context = array())
     {
-        // TODO: Implement warning() method.
+        $this->writeLog(LogLevel::WARNING, $message);
     }
 
     /**
@@ -90,7 +95,7 @@ class DummyLogger implements LoggerInterface{
      */
     public function notice($message, array $context = array())
     {
-        // TODO: Implement notice() method.
+        $this->writeLog(LogLevel::NOTICE, $message);
     }
 
     /**
@@ -105,7 +110,7 @@ class DummyLogger implements LoggerInterface{
      */
     public function info($message, array $context = array())
     {
-        // TODO: Implement info() method.
+        $this->writeLog(LogLevel::INFO, $message);
     }
 
     /**
@@ -118,7 +123,7 @@ class DummyLogger implements LoggerInterface{
      */
     public function debug($message, array $context = array())
     {
-        // TODO: Implement debug() method.
+        $this->writeLog(LogLevel::DEBUG, $message);
     }
 
     /**
@@ -132,6 +137,18 @@ class DummyLogger implements LoggerInterface{
      */
     public function log($level, $message, array $context = array())
     {
-        // TODO: Implement log() method.
+        $this->writeLog($level, $message);
+    }
+
+    private function writeLog($level, $message){
+        $filePath = __DIR__ . '/../../log/log.txt';
+        if(!file_exists($filePath)){
+            file_put_contents($filePath, '');
+        }
+
+        $data = time() . ': ' . $level . ' - '  . $message . "\n";
+        file_put_contents($filePath, $data, FILE_APPEND);
+
+        return $filePath;
     }
 }

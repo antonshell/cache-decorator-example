@@ -2,6 +2,7 @@
 
 namespace app\cache;
 
+use app\NotImplementedException;
 use Psr\Cache\CacheItemInterface;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Cache\InvalidArgumentException;
@@ -27,8 +28,6 @@ class SimpleCachePool implements CacheItemPoolInterface {
     public function getItem($key)
     {
         return new SimpleCacheItem($key);
-
-        // TODO: Implement getItem() method.
     }
 
     /**
@@ -46,10 +45,11 @@ class SimpleCachePool implements CacheItemPoolInterface {
      *   each item. A Cache item will be returned for each key, even if that
      *   key is not found. However, if no keys are specified then an empty
      *   traversable MUST be returned instead.
+     * @throws NotImplementedException
      */
     public function getItems(array $keys = array())
     {
-        // TODO: Implement getItems() method.
+        throw new NotImplementedException();
     }
 
     /**
@@ -68,10 +68,11 @@ class SimpleCachePool implements CacheItemPoolInterface {
      *
      * @return bool
      *   True if item exists in the cache, false otherwise.
+     * @throws NotImplementedException
      */
     public function hasItem($key)
     {
-        // TODO: Implement hasItem() method.
+        throw new NotImplementedException();
     }
 
     /**
@@ -79,10 +80,11 @@ class SimpleCachePool implements CacheItemPoolInterface {
      *
      * @return bool
      *   True if the pool was successfully cleared. False if there was an error.
+     * @throws NotImplementedException
      */
     public function clear()
     {
-        // TODO: Implement clear() method.
+        throw new NotImplementedException();
     }
 
     /**
@@ -100,22 +102,27 @@ class SimpleCachePool implements CacheItemPoolInterface {
      */
     public function deleteItem($key)
     {
-        // TODO: Implement deleteItem() method.
-    }/**
- * Removes multiple items from the pool.
- *
- * @param string[] $keys
- *   An array of keys that should be removed from the pool.
- * @throws InvalidArgumentException
- *   If any of the keys in $keys are not a legal value a \Psr\Cache\InvalidArgumentException
- *   MUST be thrown.
- *
- * @return bool
- *   True if the items were successfully removed. False if there was an error.
- */
+        $filePath = __DIR__ . '/../../cache/' . $key . '.txt';
+        unlink($filePath);
+        return true;
+    }
+
+    /**
+     * Removes multiple items from the pool.
+     *
+     * @param string[] $keys
+     *   An array of keys that should be removed from the pool.
+     * @throws InvalidArgumentException
+     *   If any of the keys in $keys are not a legal value a \Psr\Cache\InvalidArgumentException
+     *   MUST be thrown.
+     *
+     * @return bool
+     *   True if the items were successfully removed. False if there was an error.
+     * @throws NotImplementedException
+     */
     public function deleteItems(array $keys)
     {
-        // TODO: Implement deleteItems() method.
+        throw new NotImplementedException();
     }
 
     /**
@@ -126,10 +133,11 @@ class SimpleCachePool implements CacheItemPoolInterface {
      *
      * @return bool
      *   True if the item was successfully persisted. False if there was an error.
+     * @throws NotImplementedException
      */
     public function save(CacheItemInterface $item)
     {
-        // TODO: Implement save() method.
+        throw new NotImplementedException();
     }
 
     /**
@@ -140,10 +148,11 @@ class SimpleCachePool implements CacheItemPoolInterface {
      *
      * @return bool
      *   False if the item could not be queued or if a commit was attempted and failed. True otherwise.
+     * @throws NotImplementedException
      */
     public function saveDeferred(CacheItemInterface $item)
     {
-        // TODO: Implement saveDeferred() method.
+        throw new NotImplementedException();
     }
 
     /**
@@ -151,9 +160,10 @@ class SimpleCachePool implements CacheItemPoolInterface {
      *
      * @return bool
      *   True if all not-yet-saved items were successfully saved or there were none. False otherwise.
+     * @throws NotImplementedException
      */
     public function commit()
     {
-        // TODO: Implement commit() method.
+        throw new NotImplementedException();
     }
 }
